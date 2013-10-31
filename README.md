@@ -4,6 +4,9 @@
 [![Code Climate](https://codeclimate.com/github/shlima/standalone_typograf.png) ](https://codeclimate.com/github/shlima/standalone_typograf)
 [![Gemnasium   ](https://gemnasium.com/shlima/standalone_typograf.png)          ](https://gemnasium.com/shlima/standalone_typograf)
 
+
+![StandaloneTypograf](https://raw.github.com/shlima/standalone_typograf/master/doc/logo.png)
+
 StandaloneTypograf — gem для подготовки текста к публикации или типографирования текста на лету (вывод комментариев, например)
 
 > Пушкин писал Дельвигу: "Жду "Цыганов" и тотчас тисну...", (c) 1827 - А. С. Пушкин
