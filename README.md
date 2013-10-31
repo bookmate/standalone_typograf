@@ -1,6 +1,15 @@
 # StandaloneTypograf 3.0.0
 In development
 
+## Длинное тире
+Значение | Заменяется
+--- | ---
+- | — 
+
+```ruby
+StandaloneTypograf::Typograf.new(text).processor(:dasherize)
+```
+
 ## Contributing
 
 1. Fork it
