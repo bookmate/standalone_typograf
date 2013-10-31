@@ -16,6 +16,7 @@ module StandaloneTypograf #:nodoc:
     module Processor
       def self.compile(text, mode)
         text.gsub!(/-(\s)/, CHAR[mode]+'\1')
+        return text
       end
     end
   end
