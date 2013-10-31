@@ -1,4 +1,7 @@
 # StandaloneTypograf 3.0.0
+
+[![Travis CI   ](https://api.travis-ci.org/shlima/standalone_typograf.png)  ](https://travis-ci.org/shlima/standalone_typograf)
+
 In development
 
 ## Длинное тире
