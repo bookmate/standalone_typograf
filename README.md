@@ -7,24 +7,24 @@
 In development
 
 ## Длинное тире
-Значение | Заменяется
---- | ---
-- | — 
+Значение | Замена Utf | Замена Html
+--- | --- | ---
+- | — | \&mdash;
 
 ```ruby
 StandaloneTypograf::Typograf.new(text).processor(:dasherize)
 ```
 
 ## Мнемоники
-Значение | Заменяется
---- | ---
-(c) | ©
-(tm) | ™
-(r) | ®
-+- | ±
--> | →
-<- | ←
-~= | ≈
+Значение | Замена Utf | Замена Html
+--- | --- | ---
+(c) | © | \&copy;
+(tm) | ™ | \&trade;
+(r) | ® | \&reg;
++- | ± | \&plusmn;
+-> | → | \&rarr;
+<- | ← | \&larr;
+~= | ≈ | \&asymp;
 
 ```ruby
 StandaloneTypograf::Typograf.new(text).processor(:mnemonics)
