@@ -7,9 +7,9 @@ module StandaloneTypograf #:nodoc:
     Q = '"' # source quote
 
     CHARS = {
-        :outer_left => {html: '&laquo;', utf: '«'},
+        :outer_left  => {html: '&laquo;', utf: '«'},
         :outer_right => {html: '&raquo;', utf: '»'},
-        :inner_left => {html: '&bdquo;', utf: '„'},
+        :inner_left  => {html: '&bdquo;', utf: '„'},
         :inner_right => {html: '&ldquo;', utf: '“'},
     }.freeze
 
@@ -36,7 +36,10 @@ module StandaloneTypograf #:nodoc:
       def initialize(text, mode)
         @text = text
         @mode = mode
-        @tarr = text.split(//) # TODO comment
+        # `tarr` means <b>text array</b>
+        # this is because replaced item may contain more than 1 char (like `&laquo;`)
+        # so replaced value will be placed into the one array cell.
+        @tarr = text.split(//)
       end
 
       def lock
@@ -47,19 +50,29 @@ module StandaloneTypograf #:nodoc:
         tarr.each_with_index do |symbol, index|
           next unless symbol == Q
 
+          # == Outer
           if outside? && open_quote?(index)
             tarr[index] = CHARS[:outer_left][mode]
             outer_open_lock!
             next
           end
-
-          if inside? && close_quote?(index)
+          if inside? && !lock[:inner_open] && close_quote?(index)
             tarr[index] = CHARS[:outer_right][mode]
             outer_open_unlock!
             next
           end
 
-
+          # == Inner
+          if inside? && !lock[:inner_open] && open_quote?(index)
+            tarr[index] = CHARS[:inner_left][mode]
+            inner_open_lock!
+            next
+          end
+          if inside? && lock[:inner_open] && close_quote?(index)
+            tarr[index] = CHARS[:inner_right][mode]
+            inner_open_unlock!
+            next
+          end
         end
       end
 
@@ -69,14 +82,14 @@ module StandaloneTypograf #:nodoc:
       # If this quote is open
       def open_quote?(index)
         return true if index == 0
-        (text[index-1] =~ /\s/) && (text[index+1] =~ /[[:alpha:]]/)
+        (text[index-1] =~ /\s|^/) && (text[index+1] =~ /[[:alpha:]]/)
       end
 
       # @return [Boolean]
       # If this quote is close
       def close_quote?(index)
         return true if index == (@tarr.length-1)
-        (text[index-1] =~ /[[:alpha:]]/) && (text[index+1] =~ /\s/)
+        (text[index-1] =~ /[[:alpha:]]|[?!."]/) && (text[index+1] =~ /\s|[,.;!?#{Q}]/)
       end
 
       # @return [Boolean]
@@ -99,6 +112,14 @@ module StandaloneTypograf #:nodoc:
       def outer_open_unlock!
         lock[:inside]     = false
         lock[:outer_open] = false
+      end
+
+      def inner_open_lock!
+        lock[:inner_open] = true
+      end
+
+      def inner_open_unlock!
+        lock[:inner_open] = false
       end
     end
   end
