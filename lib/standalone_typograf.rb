@@ -26,6 +26,7 @@ module StandaloneTypograf #:nodoc:
     autoload :Fractions
     autoload :Nbspaces
     autoload :Ellipsis
+    autoload :Quotes
   end
 
   include Dashes
@@ -33,6 +34,7 @@ module StandaloneTypograf #:nodoc:
   include Fractions
   include Nbspaces
   include Ellipsis
+  include Quotes
 
   ##
   # === Options
