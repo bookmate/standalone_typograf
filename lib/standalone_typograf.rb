@@ -57,7 +57,7 @@ module StandaloneTypograf #:nodoc:
     # @return [String] 
     def processor(*names)
       names.each do |name|
-        validate_option(name, in: processors)
+        validate_option(name, in: processors.keys)
         processors[name].send(:compile, text, mode)
       end
       return text
@@ -70,7 +70,7 @@ module StandaloneTypograf #:nodoc:
 
     # @return [String]
     def prepare
-      processor(:all)
+      processor(*processors.keys)
     end
 
     private
