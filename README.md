@@ -1,4 +1,4 @@
-# StandaloneTypograf 3.0.0
+# StandaloneTypograf 3
 
 [![Travis CI   ](https://api.travis-ci.org/shlima/standalone_typograf.png)      ](https://travis-ci.org/shlima/standalone_typograf)
 [![Code Climate](https://codeclimate.com/github/shlima/standalone_typograf.png) ](https://codeclimate.com/github/shlima/standalone_typograf)
@@ -6,7 +6,26 @@
 
 In development
 
-## Длинное тире
+## Использование
+
+Создайте экземпляр типографа и передайте ему текст как единственный обязательный аргумент:
+
+```ruby
+@text = %Q( "Я "читал" стихи Быкова,- сказал он." (c) )
+typograph = StandaloneTypograph::Typograph.new(@text)
+typograph.prepare #=> «Я „читал“ стихи Быкова,— сказал он.» ©
+```
+
+По умолчанию типограф работает в режиме `utf`, если вам необходма подстановка html-кодов, передайте переметр `mode` со значением `html`
+
+```ruby
+@text = %Q( "Я "читал" стихи быкова,- сказал он." (c)" )
+typograph = StandaloneTypograph::Typograph.new(@text, mode: :html)
+typograph.prepare #=> &laquo;Я&nbsp;&bdquo;читал&ldquo; стихи Быкова,&mdash; сказал&nbsp;он.&raquo; &copy;
+```
+
+## Обработчики
+### Длинное тире
 Значение | Замена Utf | Замена Html
 --- | --- | ---
 - | &mdash; | \&mdash;
@@ -15,7 +34,7 @@ In development
 StandaloneTypograf::Typograf.new(text).processor(:dashes)
 ```
 
-## Неразрывные пробелы
+### Неразрывные пробелы
 Значение | Замена Utf | Замена Html
 --- | --- | ---
 - | &nbsp; | \&nbsp;
@@ -26,7 +45,7 @@ StandaloneTypograf::Typograf.new(text).processor(:dashes)
 StandaloneTypograf::Typograf.new(text).processor(:nbspaces)
 ```
 
-## Мнемоники
+### Мнемоники
 Значение | Замена Utf | Замена Html
 --- | --- | ---
 (c) | © | \&copy;
@@ -41,7 +60,7 @@ StandaloneTypograf::Typograf.new(text).processor(:nbspaces)
 StandaloneTypograf::Typograf.new(text).processor(:mnemonics)
 ```
 
-## Дроби
+### Дроби
 Значение | Замена Utf | Замена Html | Html код
 --- | --- | --- | ---
 1/1 | none | <sup>1</sup>&frasl;<sub>1</sub> | `<sup>1</sup>&frasl;<sub>1</sub>`
@@ -59,7 +78,7 @@ StandaloneTypograf::Typograf.new(text).processor(:fractions)
 StandaloneTypograf::Typograf.new(text, :exclude => :fractions)
 ```
 
-## Многоточие
+### Многоточие
 Значение | Замена Utf | Замена Html
 --- | --- | ---
 ... | &hellip; | \&hellip;
