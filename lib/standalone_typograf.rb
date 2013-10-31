@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'active_support/all'
-require 'standalone_typograf/version'
 
 module StandaloneTypograf #:nodoc:
   extend ActiveSupport::Autoload
@@ -26,11 +25,15 @@ module StandaloneTypograf #:nodoc:
     end
   end
 
+  autoload :Version
+
   eager_autoload do
     autoload :Dasherize
+    autoload :Signs
   end
 
   include Dasherize
+  include Signs
 
   ##
   # === Options
