@@ -5,7 +5,7 @@ require 'spec_helper'
 describe StandaloneTypograf::Fractions::Processor do
 
   it 'works on Html mode' do
-    described_class.compile('134/334', :html).should == '<sup>134</sup>&frasl;<sub>334</sub>'
+    described_class.compile(' 134/334', :html).should == ' <sup>134</sup>&frasl;<sub>334</sub>'
   end
 
   it 'does not on Utf mode' do

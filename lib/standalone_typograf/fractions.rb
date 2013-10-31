@@ -11,7 +11,7 @@ module StandaloneTypograf #:nodoc:
     module Processor
       def self.compile(text, mode)
         return text unless mode == :html
-        text.gsub!(/(?:\s|^)(\d+)(\/)(\d+)(?:\s|$)/, '<sup>\1</sup>&frasl;<sub>\3</sub>')
+        text.gsub!(/(\s|^)(\d+)(\/)(\d+)(?:\s|$)/, '\1<sup>\2</sup>&frasl;<sub>\4</sub>')
         return text
       end
     end

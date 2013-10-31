@@ -49,10 +49,8 @@ describe StandaloneTypograf::Typograf do
       end
 
       it 'response on several processors' do
-        shoulda = 'Типограф &mdash; это круто, &plusmn;'
         t = described_class.new('Типограф - это круто, +-', mode: :html)
-        t.processor(:mnemonics, :dasherize).should == shoulda
-        t.prepare.should == shoulda
+        t.processor(:mnemonics, :dasherize).should == 'Типограф &mdash; это круто, &plusmn;'
       end
     end
   end

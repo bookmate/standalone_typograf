@@ -5,14 +5,6 @@ require 'active_support/all'
 module StandaloneTypograf #:nodoc:
   extend ActiveSupport::Autoload
 
-  TAGS = {
-
-  }.freeze
-
-  CHARS = {
-    :nbsp => { html: '&nbsp;', utf: ' ' } # No breaking space
-  }.freeze
-
   @@processors = {}
 
   class << self
@@ -32,11 +24,13 @@ module StandaloneTypograf #:nodoc:
     autoload :Dasherize
     autoload :Mnemonics
     autoload :Fractions
+    autoload :Nbspace
   end
 
   include Dasherize
   include Mnemonics
   include Fractions
+  include Nbspace
 
   ##
   # === Options
