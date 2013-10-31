@@ -30,6 +30,24 @@ StandaloneTypograf::Typograf.new(text).processor(:dasherize)
 StandaloneTypograf::Typograf.new(text).processor(:mnemonics)
 ```
 
+## Дроби
+Значение | Замена Utf | Замена Html | Html код
+--- | --- | --- | ---
+1/1 | none | <sup>1</sup>&frasl;<sub>1</sub> | `<sup>1</sup>&frasl;<sub>1</sub>`
+1234124/454325 | none | <sup>1234124</sup>&frasl;<sub>454325</sub> | `<sup>1234124</sup>&frasl;<sub>454325</sub>`
+
+Типограф производит замену дробей только в режиме **html**, при этом он генерирует html код используя теги верхнего и нижнего индексов, вследствие чего, количество заменяемых дробей бесконечно.
+
+```ruby
+StandaloneTypograf::Typograf.new(text).processor(:fractions)
+```
+
+Чтобы отключить замену дробей используйте параметр `exclude` при инициализации
+
+```ruby
+StandaloneTypograf::Typograf.new(text, :exclude => :fractions)
+```
+
 ## Contributing
 
 1. Fork it
