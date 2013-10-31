@@ -31,7 +31,7 @@ typograph = StandaloneTypograph::Typograph.new(@text, mode: :html)
 typograph.prepare #=> &laquo;Я&nbsp;&bdquo;читал&ldquo; стихи Быкова,&mdash; сказал&nbsp;он.&raquo; &copy;
 ```
 
-Метод `prepare` вызывает все возможные обработчики текста. Вы можете вызвать только нужные, передав массив с названием необходимых _процессоров_, в метод `processor`
+Метод `prepare` вызывает все возможные обработчики текста. Вы можете вызвать только некоторые, передав массив с названием необходимых _процессоров_, в метод `processor`
 
 ```ruby
 typograph = StandaloneTypograph::Typograph.new(@text)
