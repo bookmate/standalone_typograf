@@ -10,6 +10,21 @@ In development
 StandaloneTypograf::Typograf.new(text).processor(:dasherize)
 ```
 
+## Мнемоники
+Значение | Заменяется
+--- | ---
+(c) | ©
+(tm) | ™
+(r) | ®
++- | ±
+-> | →
+<- | ←
+~= | ≈
+
+```ruby
+StandaloneTypograf::Typograf.new(text).processor(:mnemonics)
+```
+
 ## Contributing
 
 1. Fork it
