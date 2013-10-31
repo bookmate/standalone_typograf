@@ -50,9 +50,10 @@ module StandaloneTypograf #:nodoc:
     attr_reader   :mode
 
     def initialize(text, options={})
-      options.assert_valid_keys(:mode)
+      options.assert_valid_keys(:mode, :exclude)
       @text = text
       @mode = validate_option(options[:mode].try(:to_sym), in: [:html, :utf]) || :utf
+      exclude(options[:exclude]) if options[:exclude].present?
     end
 
     # Call a <b>separate</b> processor or <b>several</b> processors
@@ -67,12 +68,20 @@ module StandaloneTypograf #:nodoc:
 
     # @return [Hash]
     def processors
-      @processors ||= StandaloneTypograf.processors
+      @processors ||= StandaloneTypograf.processors.deep_dup
     end
 
     # @return [String]
     def prepare
       processor(*processors.keys)
+    end
+
+    def exclude(list)
+      list = Array(list) unless list.is_a?(Array)
+      list.each do |name|
+        validate_option(name, in: processors.keys)
+        processors.delete(name)
+      end
     end
 
     private
