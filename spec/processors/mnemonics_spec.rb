@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 
-describe StandaloneTypograf::Signs::Processor do
+describe StandaloneTypograf::Mnemonics::Processor do
 
   def typograf(text, mode)
     described_class::compile(text, mode)
@@ -10,11 +10,16 @@ describe StandaloneTypograf::Signs::Processor do
   texts = {
     # in <b>utf</b> section please test signs on English
     :utf => [
-      ['Cafero (c) 2013', 'Cafero © 2013']
+      ['Cafero (c) 2013', 'Cafero © 2013'],
+      ['iPhone (r)', 'iPhone ®'],
+      ['Право -> там', 'Право → там'],
+      ['Температура ~= 10', 'Температура ≈ 10'],
     ],
     # in <b>html</b> section please test signs on Russian
     :html => [
-      ['(tm) Windows', '&trade; Windows']
+      ['(tm) Windows', '&trade; Windows'],
+      ['Принеси +- 1 штуку', 'Принеси &plusmn; 1 штуку'],
+      ['Лево <- там', 'Лево &larr; там'],
     ]
   }
 

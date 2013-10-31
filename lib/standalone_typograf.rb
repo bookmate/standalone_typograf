@@ -29,11 +29,11 @@ module StandaloneTypograf #:nodoc:
 
   eager_autoload do
     autoload :Dasherize
-    autoload :Signs
+    autoload :Mnemonics
   end
 
   include Dasherize
-  include Signs
+  include Mnemonics
 
   ##
   # === Options

@@ -1,15 +1,20 @@
 # encoding: UTF-8
 
 module StandaloneTypograf #:nodoc:
-  module Signs
+  module Mnemonics
     extend ActiveSupport::Concern
 
     # Contains regexps. 
     # May contain signs in several languages separated by regexp's OR
     # e.g. eng|рус
     TEMPLATES = {
-      '\([c|с]\)'   => { html: '&copy;',  utf: '©' },
-      '\((tm|тм)\)' => { html: '&trade;', utf: '™' },
+      '\([c|с]\)'   => { html: '&copy;',   utf: '©' },
+      '\((tm|тм)\)' => { html: '&trade;',  utf: '™' },
+      '\([r|р]\)'   => { html: '&reg;',    utf: '®' },
+      '(\+\-)'      => { html: '&plusmn;', utf: '±' },
+      '(\-\>)'      => { html: '&rarr;',   utf: '→' }, 
+      '(\<\-)'      => { html: '&larr;',   utf: '←' },  
+      '(\~\=)'      => { html: '&asymp;',  utf: '≈' },  
     }.freeze
 
     included do
