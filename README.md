@@ -59,6 +59,15 @@ StandaloneTypograf::Typograf.new(text).processor(:fractions)
 StandaloneTypograf::Typograf.new(text, :exclude => :fractions)
 ```
 
+## Многоточие
+Значение | Замена Utf | Замена Html
+--- | --- | ---
+... | &hellip; | \&hellip;
+
+```ruby
+StandaloneTypograf::Typograf.new(text).processor(:ellipsis)
+```
+
 ## Contributing
 
 1. Fork it
