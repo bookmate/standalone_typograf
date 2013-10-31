@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'active_support/all'
 require 'standalone_typograf/version'
 
@@ -5,7 +7,7 @@ module StandaloneTypograf #:nodoc:
   extend ActiveSupport::Autoload
 
   TAGS = {
-    
+
   }.freeze
 
   CHARS = {
@@ -45,6 +47,10 @@ module StandaloneTypograf #:nodoc:
       options.assert_valid_keys(:mode)
       @text = text
       @mode = validate_option(options[:mode].try(:to_sym), in: [:html, :utf]) || :utf
+    end
+
+    def get_char(name)
+      CHARS[CHARS][mode]
     end
 
     private

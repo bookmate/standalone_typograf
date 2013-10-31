@@ -1,8 +1,10 @@
+# encoding: UTF-8
+
 module StandaloneTypograf #:nodoc:
   module Dasherize
     extend ActiveSupport::Concern
 
-    CHARS = {
+    CHAR = {
       :html => '&mdash;',
       :utf  => '—',
     }.freeze
@@ -12,7 +14,8 @@ module StandaloneTypograf #:nodoc:
     end
 
     module Processor
-      def self.compile(text, options={})
+      def self.compile(text, mode)
+        text.gsub!(/-(\s)/, CHAR[mode]+'\1')
       end
     end
   end
