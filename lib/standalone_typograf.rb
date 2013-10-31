@@ -25,12 +25,14 @@ module StandaloneTypograf #:nodoc:
     autoload :Mnemonics
     autoload :Fractions
     autoload :Nbspace
+    autoload :Ellipsis
   end
 
   include Dasherize
   include Mnemonics
   include Fractions
   include Nbspace
+  include Ellipsis
 
   ##
   # === Options
