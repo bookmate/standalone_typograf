@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 module StandaloneTypograf #:nodoc:
-  module Nbspace
+  module Nbspaces
     extend ActiveSupport::Concern
 
     CHAR = {
@@ -27,7 +27,7 @@ module StandaloneTypograf #:nodoc:
         text.gsub!(/(#{PARTICLES.join('|')})(\s)/i, '\1'+CHAR[mode])
 
         # dash - nbspace to the left
-        text.gsub!(/(\s)(-|#{Dasherize::CHAR[:html]}|#{Dasherize::CHAR[:utf]})/i, CHAR[mode]+'\2')
+        text.gsub!(/(\s)(-|#{Dashes::CHAR[:html]}|#{Dashes::CHAR[:utf]})/i, CHAR[mode]+'\2')
 
         return text
       end

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 module StandaloneTypograf #:nodoc:
-  module Dasherize
+  module Dashes
     extend ActiveSupport::Concern
 
     CHAR = {

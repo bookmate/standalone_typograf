@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe StandaloneTypograf::Dasherize::Processor do
+describe StandaloneTypograf::Dashes::Processor do
 
   def typograf(text, mode)
     described_class::compile(text, mode)

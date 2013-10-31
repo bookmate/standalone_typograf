@@ -21,17 +21,17 @@ module StandaloneTypograf #:nodoc:
   autoload :Version
 
   eager_autoload do
-    autoload :Dasherize
+    autoload :Dashes
     autoload :Mnemonics
     autoload :Fractions
-    autoload :Nbspace
+    autoload :Nbspaces
     autoload :Ellipsis
   end
 
-  include Dasherize
+  include Dashes
   include Mnemonics
   include Fractions
-  include Nbspace
+  include Nbspaces
   include Ellipsis
 
   ##

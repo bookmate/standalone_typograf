@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe StandaloneTypograf::Nbspace::Processor do
+describe StandaloneTypograf::Nbspaces::Processor do
 
   def typograf(text, mode)
     described_class::compile(text, mode)

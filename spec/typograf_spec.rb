@@ -30,8 +30,8 @@ describe StandaloneTypograf::Typograf do
 
     describe 'exclude' do
       it 'excludes processor' do
-        t = described_class.new('', exclude: :dasherize)
-        t.processors.include?(:dasherize).should be_false
+        t = described_class.new('', exclude: :dashes)
+        t.processors.include?(:dashes).should be_false
       end
     end
   end
@@ -50,7 +50,7 @@ describe StandaloneTypograf::Typograf do
 
       it 'response on several processors' do
         t = described_class.new('Типограф - это круто, +-', mode: :html)
-        t.processor(:mnemonics, :dasherize).should == 'Типограф &mdash; это круто, &plusmn;'
+        t.processor(:mnemonics, :dashes).should == 'Типограф &mdash; это круто, &plusmn;'
       end
     end
   end

@@ -12,7 +12,7 @@ In development
 - | &mdash; | \&mdash;
 
 ```ruby
-StandaloneTypograf::Typograf.new(text).processor(:dasherize)
+StandaloneTypograf::Typograf.new(text).processor(:dashes)
 ```
 
 ## Неразрывные пробелы
@@ -23,7 +23,7 @@ StandaloneTypograf::Typograf.new(text).processor(:dasherize)
 Неразрывные пробелы используются при отбивке длинного тире, одно-двухбуквенных слов и некоторых частиц.
 
 ```ruby
-StandaloneTypograf::Typograf.new(text).processor(:nbspace)
+StandaloneTypograf::Typograf.new(text).processor(:nbspaces)
 ```
 
 ## Мнемоники
