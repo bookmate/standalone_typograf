@@ -13,11 +13,12 @@ module StandaloneTypograf #:nodoc:
     :nbsp => { html: '&nbsp;', utf: ' ' } # No breaking space
   }.freeze
 
-  @@processors = []
+  @@processors = {}
 
   class << self
-    def register_processor(klass)
-      @@processors << klass
+    # Processor registration like { :dasherize => StandaloneTypograf::Dasherize::Processor}
+    def register_processor(_module)
+      @@processors[_module.to_s.split('::').second.downcase.to_sym] = _module
     end
 
     def processors
@@ -52,8 +53,24 @@ module StandaloneTypograf #:nodoc:
       @mode = validate_option(options[:mode].try(:to_sym), in: [:html, :utf]) || :utf
     end
 
-    def get_char(name)
-      CHARS[CHARS][mode]
+    # Call a <b>separate</b> processor or <b>several</b> processors
+    # @return [String] 
+    def processor(*names)
+      names.each do |name|
+        validate_option(name, in: processors)
+        processors[name].send(:compile, text, mode)
+      end
+      return text
+    end
+
+    # @return [Hash]
+    def processors
+      @processors ||= StandaloneTypograf.processors
+    end
+
+    # @return [String]
+    def prepare
+      processor(:all)
     end
 
     private

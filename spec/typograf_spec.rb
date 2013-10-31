@@ -22,4 +22,16 @@ describe StandaloneTypograf::Typograf do
       t.mode.should == :html
     end
   end
+
+  describe '.processors' do
+    it 'response on separate processor' do
+      t = described_class.new('Типограф - это круто, +-', mode: :html)
+      t.processor(:mnemonics).should == 'Типограф - это круто, &plusmn;'
+    end    
+
+    it 'response on several processors' do
+      t = described_class.new('Типограф - это круто, +-', mode: :html)
+      t.processor(:mnemonics, :dasherize).should == 'Типограф &mdash; это круто, &plusmn;'
+    end
+  end
 end
