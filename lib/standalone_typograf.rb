@@ -31,10 +31,12 @@ module StandaloneTypograf #:nodoc:
   eager_autoload do
     autoload :Dasherize
     autoload :Mnemonics
+    autoload :Fractions
   end
 
   include Dasherize
   include Mnemonics
+  include Fractions
 
   ##
   # === Options
