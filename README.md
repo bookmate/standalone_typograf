@@ -9,10 +9,21 @@ In development
 ## Длинное тире
 Значение | Замена Utf | Замена Html
 --- | --- | ---
-- | — | \&mdash;
+- | &mdash; | \&mdash;
 
 ```ruby
 StandaloneTypograf::Typograf.new(text).processor(:dasherize)
+```
+
+## Неразрывные пробелы
+Значение | Замена Utf | Замена Html
+--- | --- | ---
+- | &nbsp; | \&nbsp;
+
+Неразрывные пробелы используются при отбивке длинного тире, одно-двухбуквенных слов и некоторых частиц.
+
+```ruby
+StandaloneTypograf::Typograf.new(text).processor(:nbspace)
 ```
 
 ## Мнемоники
