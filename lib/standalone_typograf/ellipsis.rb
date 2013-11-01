@@ -15,7 +15,7 @@ module StandaloneTypograf #:nodoc:
 
     module Processor
       def self.compile(text, mode)
-        text.gsub!(/([[:alpha:]])([.][.][.])(\s|$)/, '\1'+CHAR[mode]+'\3')
+        text.gsub!(/([[:alpha:]])([.][.][.])(\s|$|[[:punct:]])/, '\1'+CHAR[mode]+'\3')
         return text
       end
     end
