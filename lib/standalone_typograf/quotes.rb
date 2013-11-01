@@ -30,7 +30,7 @@ module StandaloneTypograf #:nodoc:
       def self.compile(text, mode)
         compiler = self.new(text, mode)
         compiler.compile
-        text = compiler.tarr.join()
+        text.replace compiler.tarr.join()
       end
 
       def initialize(text, mode)
