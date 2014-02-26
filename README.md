@@ -36,28 +36,28 @@ gem install standalone_typograf
 
 ```ruby
 @text = %Q( "Я "читал" стихи Быкова,- сказал он." (c) )
-typograph = StandaloneTypograph::Typograph.new(@text)
+typograph = StandaloneTypograf::Typograf.new(@text)
 typograph.prepare #=> «Я „читал“ стихи Быкова,— сказал он.» ©
 ```
 
 По умолчанию типограф работает в режиме `utf`, если вам необходма подстановка html-кодов, передайте переметр `mode` со значением `html`
 
 ```ruby
-typograph = StandaloneTypograph::Typograph.new(@text, mode: :html)
+typograph = StandaloneTypograf::Typograf.new(@text, mode: :html)
 typograph.prepare #=> &laquo;Я&nbsp;&bdquo;читал&ldquo; стихи Быкова,&mdash; сказал&nbsp;он.&raquo; &copy;
 ```
 
 Метод `prepare` вызывает все возможные обработчики текста. Вы можете вызвать только некоторые, передав массив с названием необходимых _процессоров_, в метод `processor`
 
 ```ruby
-typograph = StandaloneTypograph::Typograph.new(@text)
+typograph = StandaloneTypograf::Typograf.new(@text)
 typograph.processor(:dashes, :mnemonics)
 ```
 
 Вы так же можете использовать метод `prepare` исключив ненужные обработчики. Для этого необходимо передать массив с названием ненужных _процессоров_ с параметром `exclude` при инициализации типографа:
 
 ```ruby
-typograph = StandaloneTypograph::Typograph.new(@text, exclude: :fractions)
+typograph = StandaloneTypograf::Typograf.new(@text, exclude: :fractions)
 typograph.prepare # бедут выполнены все преобразования кроме замены дробей
 ```
 
