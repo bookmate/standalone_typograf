@@ -4,7 +4,7 @@ module StandaloneTypograf #:nodoc:
   module Mnemonics
     extend ActiveSupport::Concern
 
-    # Contains regexps. 
+    # Contains regexps.
     # May contain signs in several languages separated by regexp's OR
     # e.g. eng|рус
     TEMPLATES = {
@@ -12,9 +12,9 @@ module StandaloneTypograf #:nodoc:
       '\((tm|тм)\)' => { html: '&trade;',  utf: '™' },
       '\([r|р]\)'   => { html: '&reg;',    utf: '®' },
       '(\+\-)'      => { html: '&plusmn;', utf: '±' },
-      '(\-\>)'      => { html: '&rarr;',   utf: '→' }, 
-      '(\<\-)'      => { html: '&larr;',   utf: '←' },  
-      '(\~\=)'      => { html: '&asymp;',  utf: '≈' },  
+      '(\-\>)'      => { html: '&rarr;',   utf: '→' },
+      '(\<\-)'      => { html: '&larr;',   utf: '←' },
+      '(\~\=)'      => { html: '&asymp;',  utf: '≈' },
     }.freeze
 
     included do
@@ -23,6 +23,7 @@ module StandaloneTypograf #:nodoc:
 
     module Processor
       def self.compile(text, mode)
+        text = text.dup
         TEMPLATES.each_pair do |regexp, data|
           text.gsub!(/#{regexp}/i, data[mode])
         end

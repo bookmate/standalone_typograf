@@ -8,8 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update TravisCI configuration.
 - Add RSpec tests as default Rake task.
-- Improved README content, fixed broken formattion.
+- Improved README content, fixed broken formating.
 - Report CodeClimate for the coverage.
+- Actualize RSpec config and fix failed tests.
 
 ### Fixed
 - Fix tests to run with current RSpec version.

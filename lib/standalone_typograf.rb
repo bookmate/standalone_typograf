@@ -55,13 +55,16 @@ module StandaloneTypograf #:nodoc:
     end
 
     # Call a <b>separate</b> processor or <b>several</b> processors
-    # @return [String] 
+    # @return [String]
     def processor(*names)
+      processed_text = text
+
       names.each do |name|
         validate_option(name, in: processors.keys)
-        processors[name].send(:compile, text, mode)
+        processed_text = processors[name].send(:compile, processed_text, mode)
       end
-      return text
+
+      processed_text
     end
 
     # @return [Hash]
@@ -85,9 +88,9 @@ module StandaloneTypograf #:nodoc:
     private
 
       # Validate initialization options that have been passed thought the params.
-      # 
+      #
       # Available validations:
-      #   * in [Array] 
+      #   * in [Array]
       #     provided param should be in array, for example:
       #    `validate_option(:hello, in: [:hello, :world])`
       #

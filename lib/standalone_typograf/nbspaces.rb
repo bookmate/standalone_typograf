@@ -21,15 +21,9 @@ module StandaloneTypograf #:nodoc:
     module Processor
       def self.compile(text, mode)
         # One or three letter word - nbspace to the right
-        text.gsub!(/(\s|^)([[:alpha:]]{1,2})(\s)/i, '\1\2'+CHAR[mode])
-
-        # nbspace to the right
-        text.gsub!(/(#{PARTICLES.join('|')})(\s)/i, '\1'+CHAR[mode])
-
-        # dash - nbspace to the left
-        text.gsub!(/(\s)(-|#{Dashes::CHAR[:html]}|#{Dashes::CHAR[:utf]})/i, CHAR[mode]+'\2')
-
-        return text
+        text.gsub(/(\s|^)([[:alpha:]]{1,2})(\s)/i, '\1\2'+CHAR[mode]).
+          gsub(/(#{PARTICLES.join('|')})(\s)/i, '\1'+CHAR[mode]). # nbspace to the right
+          gsub(/(\s)(-|#{Dashes::CHAR[:html]}|#{Dashes::CHAR[:utf]})/i, CHAR[mode]+'\2') # dash - nbspace to the left
       end
     end
   end

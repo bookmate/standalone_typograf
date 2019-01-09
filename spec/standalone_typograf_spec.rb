@@ -1,12 +1,11 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 require 'spec_helper'
 
-describe StandaloneTypograf do
-
-  describe 'implementation' do 
+RSpec.describe StandaloneTypograf do
+  describe 'implementation' do
     it 'registers processors' do
-      described_class.processors.length.should > 0
+      expect(described_class.processors.length).to be > 0
     end
   end
 end

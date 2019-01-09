@@ -1,31 +1,30 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 require 'spec_helper'
 
-describe StandaloneTypograf::Nbspaces::Processor do
-
+RSpec.describe StandaloneTypograf::Nbspaces::Processor do
   def typograf(text, mode)
-    described_class::compile(text, mode)
+    described_class.compile(text, mode)
   end
 
   texts = {
-    :utf => [
-        ['В Украине', 'В Украине']
+    utf: [
+      ['В Украине', 'В Украине']
     ],
-    :html => [
+    html: [
       ['Форточка в окне', 'Форточка в&nbsp;окне'],
       ['Иди по краю', 'Иди по&nbsp;краю'],
       ['Исключительно Великолепно', 'Исключительно&nbsp;Великолепно'],
       ['Пить - здоровью предить', 'Пить&nbsp;- здоровью предить'],
-      ['Лес &mdash; источник древесины', 'Лес&nbsp;&mdash; источник древесины'],
+      ['Лес &mdash; источник древесины', 'Лес&nbsp;&mdash; источник древесины']
     ]
   }
 
-  it 'works' do 
+  it 'works' do
     texts.each_pair do |mode, array|
-      array.each do|text_pair|  
-        typograf(text_pair[0], mode).should == text_pair[1]
+      array.each do |text_pair|
+        expect(typograf(text_pair[0], mode)).to eq text_pair[1]
       end
-    end 
+    end
   end
 end
