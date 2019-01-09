@@ -1,12 +1,12 @@
-# encoding: UTF-8
+# frozen_string_literal: true
 
 module StandaloneTypograf #:nodoc:
   module Dashes
     extend ActiveSupport::Concern
 
     CHAR = {
-      :html => '&mdash;',
-      :utf  => '—',
+      html: '&mdash;',
+      utf: '—'
     }.freeze
 
     included do
@@ -15,7 +15,7 @@ module StandaloneTypograf #:nodoc:
 
     module Processor
       def self.compile(text, mode)
-        text.gsub(/-(\s)/, CHAR[mode]+'\1')
+        text.gsub(/(-|–)(\s)/, CHAR[mode] + '\2')
       end
     end
   end
