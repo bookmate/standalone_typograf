@@ -31,7 +31,7 @@ describe StandaloneTypograf::Typograf do
     describe 'exclude' do
       it 'excludes processor' do
         t = described_class.new('', exclude: :dashes)
-        t.processors.include?(:dashes).should be_false
+        t.processors.include?(:dashes).should be false
       end
     end
   end

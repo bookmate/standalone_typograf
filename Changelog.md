@@ -1,3 +1,7 @@
+## [Unreleased]
+### Fixed
+* Fix tests to run with current RSpec version
+
 ## 3.0.2
 ### Bug fixes
 * Исправлен баг замены троеточия при последующем символе пунктуации
