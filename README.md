@@ -1,8 +1,8 @@
 # StandaloneTypograf
 
-[![Travis CI   ](https://api.travis-ci.org/shlima/standalone_typograf.png)      ](https://travis-ci.org/shlima/standalone_typograf)
-[![Code Climate](https://codeclimate.com/github/shlima/standalone_typograf.png) ](https://codeclimate.com/github/shlima/standalone_typograf)
-[![Gemnasium   ](https://gemnasium.com/shlima/standalone_typograf.png)          ](https://gemnasium.com/shlima/standalone_typograf)
+[![Build Status](https://travis-ci.org/jbmeerkat/standalone_typograf.svg?branch=master)](https://travis-ci.org/jbmeerkat/standalone_typograf)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3a0136681fac679dac45/maintainability)](https://codeclimate.com/github/jbmeerkat/standalone_typograf/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3a0136681fac679dac45/test_coverage)](https://codeclimate.com/github/jbmeerkat/standalone_typograf/test_coverage)
 
 
 ![StandaloneTypograf](https://raw.github.com/shlima/standalone_typograf/master/doc/logo.png)
