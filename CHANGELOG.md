@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Update TravisCI configuration
+- Add RSpec tests as default Rake task
 
 ### Fixed
 - Fix tests to run with current RSpec version.
