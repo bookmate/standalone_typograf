@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved README content, fixed broken formating.
 - Report CodeClimate for the coverage.
 - Actualize RSpec config and fix failed tests.
+- Add binaries for setup and console.
 
 ### Fixed
 - Fix tests to run with current RSpec version.
