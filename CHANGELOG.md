@@ -1,0 +1,33 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Fixed
+- Fix tests to run with current RSpec version.
+- Changed Changelog format to respect https://keepachangelog.com/en/1.0.0/ recommendations.
+
+## [3.0.2]
+### Fixed
+- Исправлен баг замены троеточия при последующем символе пунктуации
+
+## [3.0.1]
+### Fixed
+- Испрвлен баг с необработкой кавычек процессором `quotes` используя метод `prepare`
+
+## [3.0.0]
+### Changed
+- Gem был полностью переписан.
+- Изменён метод доступа к отдельным процессорам. Теперь используется единый метод `processor`, вместо отдельных именованных методов. Например: `typograf.fractions` заменется на `typograf.processor(:fractions)`,  `typograf.quotes` заменется на `typograf.processor(:quotes)` и т.д.
+- Процессор `signs` переименован на `mnemonics`
+- Процессор `dots` переименован на `ellipsis`
+- Процессор `nbspace` переименован на `nbspaces`
+- Убраны инициализационные параметры типографа: `signs` и `quotes`
+
+### Added
+- Замена дробей изменена на html-code вместо utf-символа, что делает возможным замену любого дробного числового значения.
+- Добавлен инициализационный параметр `mode`. Возмодные режимы: `:html` (подстановка html-кода символа), `:utf` (подстановка utf символа)
+
+## [2.0.2]
