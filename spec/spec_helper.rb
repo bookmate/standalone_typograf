@@ -1,4 +1,7 @@
-# encoding: UTF-8
+# frozen_string_literal: true
+
+require 'simplecov'
+SimpleCov.start
 
 require 'standalone_typograf'
 
