@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Fix dashes in simple ranges like "10-20" in favor of broken minuses
+in math. We aren't likely to face them.
+
 ### Changed
 - Update TravisCI configuration.
 - Add RSpec tests as default Rake task.

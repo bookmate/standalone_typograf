@@ -15,7 +15,9 @@ module StandaloneTypograf #:nodoc:
 
     module Processor
       def self.compile(text, mode)
-        text.gsub(/(-|–)(\s)/, CHAR[mode] + '\2')
+        text.
+          gsub(/(-|–)(\s)/, CHAR[mode] + '\2').
+          gsub(/(\d+)(-|—)(\d+)/, '\1–\3')
       end
     end
   end
